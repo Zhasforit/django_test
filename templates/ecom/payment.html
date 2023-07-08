@@ -1,0 +1,35 @@
+{% extends 'ecom/customer_base.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+
+</head>
+<style media="screen">
+    body{
+        background: var(--bg);
+        color:#fff;
+    }
+</style>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<marquee scrolldelay="50">ЭТО НЕ НАСТОЯЩАЯ СТРАНИЦА ОПЛАТЫ! МЫ НЕ СОБИРАЕМ ВВЕДЕННУЮ ИНФОРМАЦИЮ!</marquee>
+<marquee scrolldelay="50">ОРГАНИЗОВАНО ДЛЯ ДЕМОНСТРАЦИИ ВОЗМОЖНОСТЕЙ САЙТА!</marquee>
+<br><br>
+<h1 align="center">Данные карты</h1>
+<form role="form" method="post">
+    <div class="row" align="center">
+        <h1>Номер карты</h1>
+        <input type="text" class="form-control" id="cardNumber" placeholder="1234 1234 1234 1234" required/>
+        <h1>Годен до:</h1>
+        <input type="text" class="form-control" id="expityMonth" placeholder="ММ" required />
+        <input type="text" class="form-control" id="expityYear" placeholder="ГГ" required />
+        <h1>CVV:</h1>
+        <input type="password" class="form-control" id="cvCode" placeholder="CVV" required />
+        <h1>Конечная сумма: {{total}} ₸ </h1>
+        <a style="font-size: 20px" href="/payment-success" class="btn btn-success btn-lg btn-block" role="button">Оплатить</a>
+    </div>
+</form>
+
+
+{% endblock content %}

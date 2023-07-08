@@ -1,0 +1,66 @@
+{% extends 'ecom/customer_base.html' %}
+{% load static %}
+
+{% block content %}
+
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
+
+<h3 style="text-align:center;"> Спасибо за ваш заказ  <strong>{{request.user}}</strong> !</h3> <br><br>
+<div class="container">
+    <h2 class="card-header" style="text-align:center; color: #000"> Мои заказы / Трэкинг </h2>
+
+    {% for products,order in data %}
+
+    <article class="card">
+        <div class="card-body">
+            <ul class="row" style="margin-left:20px;margin-top:20px;">
+                <li class="col-md-4">
+                  <figure class="itemside mb-3">
+                    {%for product in products%}
+                      <div class="aside"><img src="{% static product.product_image.url %}" class="img-sm border"></div>
+                          <h2 class="title"><strong>Название : </strong>{{product.name}} <br> <strong>Описание : </strong>{{product.description}}</h2> <span class="title"><h2><strong>Цена : </strong>{{product.price}} ₸</h2>></span>
+                  </figure>
+                </li>
+                <li class="col-md-4">
+                    <h2 style="color: #000"><strong>Адрес доставки :</strong> <br> {{order.address}}</h2>
+                </li>
+                <li class="col-md-4">
+                    <h2 class="col" style="color: #000"> <strong>Статус :</strong> {{order.status}} </h2> <br>
+                    <h2><a style="text-decoration:none; color:blue;" href="{% url 'download-invoice' order.id product.id  %}" >Загрузить накладную</a></h2>
+                </li>
+                {%endfor%}
+            </ul>
+            <hr>
+
+            <div class="track">
+                {%if order.status == 'Pending' %}
+                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-frown-o"></i> </span> <span class="text">Заказ в ожидании</span> </div>
+                <div class="step "> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-check"></i> </span> <span class="text"> Заказ подтвержден</span> </div>
+                <div class="step "> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-truck"></i> </span> <span class="text"> Заказ отправлен </span> </div>
+                <div class="step "> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-home"></i> </span> <span class="text">Заказ доставлен</span> </div>
+                {%elif order.status == 'Order Confirmed' %}
+                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-frown-o"></i> </span> <span class="text">Заказ в ожидании</span> </div>
+                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-check"></i> </span> <span class="text"> Заказ подтвержден</span> </div>
+                <div class="step "> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-truck"></i> </span> <span class="text"> Заказ отправлен </span> </div>
+                <div class="step "> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-home"></i> </span> <span class="text">Заказ доставлен</span> </div>
+                {%elif order.status == 'Out for Delivery'%}
+                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-frown-o"></i> </span> <span class="text">Заказ в ожидании</span> </div>
+                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-check"></i> </span> <span class="text"> Заказ подтвержден</span> </div>
+                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-truck"></i> </span> <span class="text"> Заказ отправлен </span> </div>
+                <div class="step "> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-home"></i> </span> <span class="text">Заказ доставлен</span> </div>
+                {%else%}
+                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-frown-o"></i> </span> <span class="text">Заказ в ожидании</span> </div>
+                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-check"></i> </span> <span class="text"> Заказ подтвержден</span> </div>
+                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-truck"></i> </span> <span class="text"> Заказ отправлен </span> </div>
+                <div class="step active"> <span class="icon"> <i style="padding-top:5px; padding-right:20px;" class="fa fa-home"></i> </span> <span class="text">Заказ доставлен</span> </div>
+                {%endif%}
+            </div>
+
+        </div>
+    </article><br>
+    {%endfor%}
+</div>
+<br><br><br><br><br>
+{% endblock content %}

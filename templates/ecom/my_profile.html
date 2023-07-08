@@ -1,0 +1,15 @@
+{% extends 'ecom/customer_base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div style="text-align: center; padding-top: 200px" class="container">
+    <h2>Логин: {{request.user}}</h2><h2>Эл.Почта: {{customer.address}}</h2>
+    <h2>Телефон: {{customer.mobile}}</h2>
+</div>
+<br>
+<div style="text-align: center;">
+  <a href="/edit-profile"><button class="button" ><span>Редактировать профиль </span></button></a>
+</div>
+
+{% endblock content %}

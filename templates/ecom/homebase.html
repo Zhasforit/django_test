@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Интернет-магазин</title>
+  <link type="text/css" href="{% static 'css/style.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+  {%if request.user.is_authenticated%}
+    {% include "ecom/customer_navbar.html" %}
+  {%else%}
+    {% include "ecom/navbartest.html" %}
+  {%endif%}
+
+
+  {%block content%}
+
+  {%endblock content%}
+
+  
+  {% include "ecom/footer.html" %}
+</body>
+
+</html>
