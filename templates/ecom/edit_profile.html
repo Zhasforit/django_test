@@ -1,0 +1,21 @@
+{% extends 'ecom/customer_base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+<br><br><br><br><br><br>
+<br><br><br><br><br><br>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div style="text-align: left; padding-left: 800px">
+      <h1>Редактор профиля</h1><br>
+      <h2>Имя: {% render_field userForm.first_name placeholder="Имя" %}</h2>
+      <h2>Фамилия: {% render_field userForm.last_name placeholder="Фамилия" %}</h2>
+      <h2>Логин: {% render_field userForm.username placeholder="Логин" %}</h2>
+      <h2>Телефон: {% render_field customerForm.mobile placeholder="Телефон" %}</h2>
+      <h2>Пароль: {% render_field userForm.password placeholder="Пароль" %}</h2>
+      <h2>Эл.почта: {% render_field customerForm.address placeholder="Эл.почта" %}</h2><br>
+      <button type="submit" class="btnSubmit">Сохранить</button>
+  </div>
+</form>
+
+{% endblock content %}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Ibraev store</title>
+  <link type="text/css" href="{% static 'css/style.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+  {% include "ecom/navbartest.html" %}
+
+  <div style="padding-top: 200px" class="jumbotron">
+    <h1 style="text-align: center">Ваше сообщение было успешно отправлено !</h1>
+    <h2 style="text-align: center; padding-top: 10px">В скором времени мы ответим вам !</h2>
+    <h2 style="text-align: center; padding-top: 10px">Проверь другие функции нашего сайта !</h2>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="/" role="button">Главная</a>
+    </p>
+  </div>
+
+  {% include "ecom/footer.html" %}
+</body>
+
+
+</html>

@@ -1,0 +1,27 @@
+{% extends 'ecom/customer_base.html' %}
+{% load static %}
+{% block content %}
+
+
+  {%if products%}
+<h3 style="text-align:center; color:yellow;">{{word}}</h3>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<!-- products data starttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt -->
+<div class="box-container">
+      {% for p in products %}
+      <!-- card1 -->
+          <div class="box">
+              <img class="img" src="{% static p.product_image.url %}" alt="img">
+              <h3>{{p.name}}</h3>
+              <div class="price">{{p.price}} ₸</div>
+              <a href="{% url 'add-to-cart' p.id  %}" class="btn">Добавить в корзину</a>
+          </div>
+  {% endfor %}
+</div>
+{%else%}
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<h1 style="text-align:center; color:yellow;">По данному запросу ничего не найдено :(</h1>
+{%endif%}
+
+
+{% endblock content %}
